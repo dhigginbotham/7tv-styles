@@ -2,6 +2,12 @@
 
 A React component library for beautiful paint effects and gradient text styling, featuring 189+ unique effects scraped from 7tv.app.
 
+## 🚀 Live Demo
+
+**[View Interactive Demo](https://dhigginbotham.github.io/7tv-styles/)**
+
+Experience all 189+ paint effects with dynamic gradient scaling! Click any effect to see it in action across different font sizes. Test the Factory Error effect to see the sick ass X and Y axis scaling system developed by our vibe coding team.
+
 ## Installation
 
 ```bash
