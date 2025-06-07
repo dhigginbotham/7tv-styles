@@ -1,0 +1,65 @@
+{
+  "name": "7tv-styles",
+  "version": "1.0.0",
+  "description": "A React component library for beautiful paint effects and gradient text styling, featuring 189+ unique effects scraped from 7tv.app.",
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.js"
+    },
+    "./effects": {
+      "import": "./lib/effects/index.js",
+      "require": "./lib/effects/index.js"
+    },
+    "./tree-shakeable": {
+      "import": "./lib/PaintTreeShakeable.js",
+      "require": "./lib/PaintTreeShakeable.js"
+    }
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "babel src --out-dir lib --copy-files",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@babel/preset-react": "^7.22.0",
+    "eslint": "^9.28.0",
+    "neostandard": "^0.12.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "modules": false
+        }
+      ],
+      "@babel/preset-react"
+    ]
+  }
+}

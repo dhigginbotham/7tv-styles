@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Inter, sans-serif;
+  background-color: #121212;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+[class*="7tv__paint-effects--"] {
+  cursor: pointer;
+  user-select: none;
+}
