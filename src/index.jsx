@@ -104,7 +104,7 @@ export const Paint = ({ children, style: inlineStyle = {}, effect, ...props }) =
 }
 
 // Tree-shakeable exports
-export { Paint as PaintTreeShakeable } from './PaintTreeShakeable.jsx'
+export { Paint as PaintTreeShakeable } from './PaintTreeShakeable.js'
 export * from './effects/index.js'
 
 // Default export for convenience (backward compatible)
