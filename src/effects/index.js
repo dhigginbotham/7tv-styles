@@ -3,6 +3,7 @@
  *
  * This module exports each of the 189+ 7TV paint effects as individual named exports,
  * enabling tree-shaking to include only the effects you actually use in your bundle.
+ * Each effect is imported from its own individual file for optimal tree shaking.
  *
  * @fileoverview Tree-shakeable paint effect exports
  * @author Vibe Coding Team
@@ -19,15 +20,215 @@
  * <Paint effectStyle={vaporwave}>Vaporwave Text</Paint>
  */
 
-// Individual effect exports for tree shaking
-import styles from '../styles.json'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-/**
- * Extract individual effects from the styles object
- * @type {Object<string, Object>}
- */
+// Individual effect exports for optimal tree shaking
+export { summer } from './individual/summer.js'
+export { rainbow } from './individual/rainbow.js'
+export { fireAndIce } from './individual/fire-and-ice.js'
+export { factoryError } from './individual/factory-error.js'
+export { leprechaun } from './individual/leprechaun.js'
+export { firefly } from './individual/firefly.js'
+export { bubblegum } from './individual/bubblegum.js'
+export { eggHunt } from './individual/egg-hunt.js'
+export { lollipop } from './individual/lollipop.js'
+export { warmWinds } from './individual/warm-winds.js'
+export { fairyGlow } from './individual/fairy-glow.js'
+export { monstera } from './individual/monstera.js'
+export { eightsPool } from './individual/80s-pool.js'
+export { sailorsDelight } from './individual/sailors-delight.js'
+export { puddle } from './individual/puddle.js'
+export { honeydetected } from './individual/honeydetected.js'
+export { blueberry } from './individual/blueberry.js'
+export { kittyCat } from './individual/kitty-cat.js'
+export { jungle } from './individual/jungle.js'
+export { lobster } from './individual/lobster.js'
+export { freshSoda } from './individual/fresh-soda.js'
+export { farmersSky } from './individual/farmers-sky.js'
+export { lavenderField } from './individual/lavender-field.js'
+export { solarFlare } from './individual/solar-flare.js'
+export { hippieVan } from './individual/hippie-van.js'
+export { uranium } from './individual/uranium.js'
+export { peacock } from './individual/peacock.js'
+export { catseye } from './individual/catseye.js'
+export { grapefruitSlice } from './individual/grapefruit-slice.js'
+export { filmCamera } from './individual/film-camera.js'
+export { copperPatina } from './individual/copper-patina.js'
+export { monsteraVariegata } from './individual/monstera-variegata.js'
+export { peppermint } from './individual/peppermint.js'
+export { slushie } from './individual/slushie.js'
+export { lifeInPlastic } from './individual/life-in-plastic.js'
+export { autumnForest } from './individual/autumn-forest.js'
+export { gummyWorm } from './individual/gummy-worm.js'
+export { atlanticDeeps } from './individual/atlantic-deeps.js'
+export { zombie } from './individual/zombie.js'
+export { iceCold } from './individual/ice-cold.js'
+export { slashed } from './individual/slashed.js'
+export { halloweenFever } from './individual/halloween-fever.js'
+export { sixties } from './individual/sixties.js'
+export { berryGood } from './individual/berry-good.js'
+export { present } from './individual/present.js'
+export { gluhweinTime } from './individual/gluhwein-time.js'
+export { sunrise } from './individual/sunrise.js'
+export { fireworks } from './individual/fireworks.js'
+export { hamburger } from './individual/hamburger.js'
+export { pastel } from './individual/pastel.js'
+export { avocado } from './individual/avocado.js'
+export { penguin } from './individual/penguin.js'
+export { nectarine } from './individual/nectarine.js'
+export { amethyst } from './individual/amethyst.js'
+export { menthol } from './individual/menthol.js'
+export { swampOgre } from './individual/swamp-ogre.js'
+export { heart } from './individual/heart.js'
+export { raspberry } from './individual/raspberry.js'
+export { cottagecore } from './individual/cottagecore.js'
+export { crocus } from './individual/crocus.js'
+export { luckyCharm } from './individual/lucky-charm.js'
+export { potOfGold } from './individual/pot-of-gold.js'
+export { nightclub } from './individual/nightclub.js'
+export { easterCandy } from './individual/easter-candy.js'
+export { prismatic } from './individual/prismatic.js'
+export { alienPlease } from './individual/alien-please.js'
+export { rabbit } from './individual/rabbit.js'
+export { latteMacchiato } from './individual/latte-macchiato.js'
+export { tropical } from './individual/tropical.js'
+export { fantabulous } from './individual/fantabulous.js'
+export { cloudy } from './individual/cloudy.js'
+export { sugarMint } from './individual/sugar-mint.js'
+export { chamomile } from './individual/chamomile.js'
+export { hibiscus } from './individual/hibiscus.js'
+export { lemonSlice } from './individual/lemon-slice.js'
+export { mojito } from './individual/mojito.js'
+export { breeze } from './individual/breeze.js'
+export { celestial } from './individual/celestial.js'
+export { aquamarine } from './individual/aquamarine.js'
+export { watermelonSlice } from './individual/watermelon-slice.js'
+export { citrusPunch } from './individual/citrus-punch.js'
+export { creamSoda } from './individual/cream-soda.js'
+export { beachBall } from './individual/beach-ball.js'
+export { popsicle } from './individual/popsicle.js'
+export { rhubarb } from './individual/rhubarb.js'
+export { orchid } from './individual/orchid.js'
+export { wisteria } from './individual/wisteria.js'
+export { coralReef } from './individual/coral-reef.js'
+export { pinkPrincess } from './individual/pink-princess.js'
+export { corncob } from './individual/corncob.js'
+export { ultraviolet } from './individual/ultraviolet.js'
+export { sunflower } from './individual/sunflower.js'
+export { horizon } from './individual/horizon.js'
+export { bloodyMary } from './individual/bloody-mary.js'
+export { skeleton } from './individual/skeleton.js'
+export { candyCorn } from './individual/candy-corn.js'
+export { plague } from './individual/plague.js'
+export { retrovision } from './individual/retrovision-.js'
+export { limoncello } from './individual/limoncello.js'
+export { firebrand } from './individual/firebrand.js'
+export { fallLeaves } from './individual/fall-leaves.js'
+export { sourCandy } from './individual/sour-candy.js'
+export { shoreline } from './individual/shoreline.js'
+export { nightbloom } from './individual/nightbloom.js'
+export { mistletoe } from './individual/mistletoe.js'
+export { iceberg } from './individual/iceberg.js'
+export { vaporwave } from './individual/vaporwave.js'
+export { glazedDonut } from './individual/glazed-donut.js'
+export { northStar } from './individual/north-star.js'
+export { pinkLemonade } from './individual/pink-lemonade.js'
+export { warlock } from './individual/warlock.js'
+export { pohutukawa } from './individual/pohutukawa.js'
+export { juiceBox } from './individual/juice-box.js'
+export { rose } from './individual/rosé.js'
+export { irishman } from './individual/irishman.js'
+export { springFlowers } from './individual/spring-flowers.js'
+export { radical } from './individual/radical.js'
+export { friedEgg } from './individual/fried-egg.js'
+export { easterEgg } from './individual/easter-egg.js'
+export { pastelSky } from './individual/pastel-sky.js'
+export { warmerNights } from './individual/warmer-nights.js'
+export { spaceship } from './individual/spaceship.js'
+export { cinder } from './individual/cinder.js'
+export { sunlight } from './individual/sunlight.js'
+export { pineapple } from './individual/pineapple.js'
+export { cincoDeMayo } from './individual/cinco-de-mayo.js'
+export { gamerGirl } from './individual/gamer-girl.js'
+export { neapolitan } from './individual/neapolitan.js'
+export { faintLilac } from './individual/faint-lilac.js'
+export { prideMonth } from './individual/pride-month.js'
+export { anodized } from './individual/anodized.js'
+export { toothpaste } from './individual/toothpaste.js'
+export { blossom } from './individual/blossom.js'
+export { hypselodoris } from './individual/hypselodoris.js'
+export { dinosaur } from './individual/dinosaur.js'
+export { beachPlease } from './individual/beach-please.js'
+export { friendship } from './individual/friendship.js'
+export { clownfish } from './individual/clownfish.js'
+export { mango } from './individual/mango.js'
+export { slurpee } from './individual/slurpee.js'
+export { tieDye } from './individual/tie-dye.js'
+export { cocktail } from './individual/cocktail.js'
+export { frutigerAero } from './individual/frutiger-aero.js'
+export { seaFoam } from './individual/sea-foam.js'
+export { manaPotion } from './individual/mana-potion.js'
+export { ribbon } from './individual/ribbon.js'
+export { strawberryCreme } from './individual/strawberry-crème.js'
+export { theJoker } from './individual/the-joker.js'
+export { pastelween } from './individual/pastelween.js'
+export { impishBlush } from './individual/impish-blush.js'
+export { hellfire } from './individual/hellfire.js'
+export { cyberOptics } from './individual/cyber-optics.js'
+export { fuchsia } from './individual/fuchsia.js'
+export { turkeySeason } from './individual/turkey-season.js'
+export { elderDragon } from './individual/elder-dragon.js'
+export { divided } from './individual/divided.js'
+export { kawaii } from './individual/kawaii.js'
+export { wrapped } from './individual/wrapped.js'
+export { glowingEmber } from './individual/glowing-ember.js'
+export { eggnog } from './individual/eggnog.js'
+export { jellybean } from './individual/jellybean.js'
+export { frostbite } from './individual/frostbite.js'
+export { roseGold } from './individual/rose-gold.js'
+export { firecracker } from './individual/firecracker.js'
+export { divine } from './individual/divine.js'
+export { blueJay } from './individual/blue-jay.js'
+export { stupidCupid } from './individual/stupid-cupid.js'
+export { mochi } from './individual/mochi.js'
+export { eldenLord } from './individual/elden-lord.js'
+export { sunsetFizz } from './individual/sunset-fizz.js'
+export { snowdrop } from './individual/snowdrop.js'
+export { bouquet } from './individual/bouquet.js'
+export { zestyLemon } from './individual/zesty-lemon.js'
+export { cardinal } from './individual/cardinal.js'
+export { forestSpring } from './individual/forest-spring.js'
+export { carrotCake } from './individual/carrot-cake.js'
+export { sprinkles } from './individual/sprinkles.js'
+export { silverFlare } from './individual/silver-flare.js'
+export { peckyChicken } from './individual/pecky-chicken.js'
+export { supernova } from './individual/supernova.js'
+export { nuclearWaste } from './individual/nuclear-waste.js'
+export { mintyWave } from './individual/minty-wave.js'
+export { sourMelon } from './individual/sour-melon.js'
+export { primary } from './individual/primary.js'
+export { scorched } from './individual/scorched.js'
+export { enchanted } from './individual/enchanted.js'
+export { atlantis } from './individual/atlantis.js'
+export { unicorn } from './individual/unicorn.js'
+export { tropica } from './individual/tropica.js'
+
+// Note: For backward compatibility, we provide allEffects and default export
+// However, these will import ALL effects and should be avoided for optimal tree shaking
+// Use individual named imports instead: import { summer, rainbow } from '7tv-styles/effects'
+
+// Get current directory for ES modules
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// Read styles.json for backward compatibility
+const stylesPath = path.join(__dirname, '..', 'styles.json')
+const styles = JSON.parse(fs.readFileSync(stylesPath, 'utf8'))
+
+// Extract effects from styles for backward compatibility
 const effects = {}
-
 Object.keys(styles).forEach(className => {
   if (className.startsWith('.7tv__paint-effects--')) {
     const effectName = className.replace('.7tv__paint-effects--', '')
@@ -35,221 +236,16 @@ Object.keys(styles).forEach(className => {
   }
 })
 
-// Export individual effects for tree shaking
-
-/** @type {Object} Summer gradient effect with pink/purple tones */
-export const summer = effects['summer']
-
-/** @type {Object} Rainbow gradient effect with full spectrum colors */
-export const rainbow = effects['rainbow']
-
-/** @type {Object} Fire and ice gradient effect with red/blue contrast */
-export const fireAndIce = effects['fire-and-ice']
-
-/** @type {Object} Factory error gradient effect with striped pattern */
-export const factoryError = effects['factory-error']
-export const leprechaun = effects['leprechaun']
-export const firefly = effects['firefly']
-export const bubblegum = effects['bubblegum']
-export const eggHunt = effects['egg-hunt']
-export const lollipop = effects['lollipop']
-export const warmWinds = effects['warm-winds']
-export const fairyGlow = effects['fairy-glow']
-export const monstera = effects['monstera']
-export const eightsPool = effects['80s-pool']
-export const sailorsDelight = effects['sailors-delight']
-export const puddle = effects['puddle']
-export const honeydetected = effects['honeydetected']
-export const blueberry = effects['blueberry']
-export const kittyCat = effects['kitty-cat']
-export const jungle = effects['jungle']
-export const lobster = effects['lobster']
-export const freshSoda = effects['fresh-soda']
-export const farmersSky = effects['farmers-sky']
-export const lavenderField = effects['lavender-field']
-export const solarFlare = effects['solar-flare']
-export const hippieVan = effects['hippie-van']
-export const uranium = effects['uranium']
-export const peacock = effects['peacock']
-export const catseye = effects['catseye']
-export const grapefruitSlice = effects['grapefruit-slice']
-export const filmCamera = effects['film-camera']
-export const copperPatina = effects['copper-patina']
-export const monsteraVariegata = effects['monstera-variegata']
-export const peppermint = effects['peppermint']
-export const slushie = effects['slushie']
-export const lifeInPlastic = effects['life-in-plastic']
-export const autumnForest = effects['autumn-forest']
-export const gummyWorm = effects['gummy-worm']
-export const atlanticDeeps = effects['atlantic-deeps']
-export const zombie = effects['zombie']
-export const iceCold = effects['ice-cold']
-export const slashed = effects['slashed']
-export const halloweenFever = effects['halloween-fever']
-export const sixties = effects['sixties']
-export const berryGood = effects['berry-good']
-export const present = effects['present']
-export const gluhweinTime = effects['gluhwein-time']
-export const sunrise = effects['sunrise']
-export const fireworks = effects['fireworks']
-export const hamburger = effects['hamburger']
-export const pastel = effects['pastel']
-export const avocado = effects['avocado']
-export const penguin = effects['penguin']
-export const nectarine = effects['nectarine']
-export const amethyst = effects['amethyst']
-export const menthol = effects['menthol']
-export const swampOgre = effects['swamp-ogre']
-export const heart = effects['heart']
-export const raspberry = effects['raspberry']
-export const cottagecore = effects['cottagecore']
-export const crocus = effects['crocus']
-export const luckyCharm = effects['lucky-charm']
-export const potOfGold = effects['pot-of-gold']
-export const nightclub = effects['nightclub']
-export const easterCandy = effects['easter-candy']
-export const prismatic = effects['prismatic']
-export const alienPlease = effects['alien-please']
-export const rabbit = effects['rabbit']
-export const latteMacchiato = effects['latte-macchiato']
-export const tropical = effects['tropical']
-export const fantabulous = effects['fantabulous']
-export const cloudy = effects['cloudy']
-export const sugarMint = effects['sugar-mint']
-export const chamomile = effects['chamomile']
-export const hibiscus = effects['hibiscus']
-export const lemonSlice = effects['lemon-slice']
-export const mojito = effects['mojito']
-export const breeze = effects['breeze']
-export const celestial = effects['celestial']
-export const aquamarine = effects['aquamarine']
-export const watermelonSlice = effects['watermelon-slice']
-export const citrusPunch = effects['citrus-punch']
-export const creamSoda = effects['cream-soda']
-export const beachBall = effects['beach-ball']
-export const popsicle = effects['popsicle']
-export const rhubarb = effects['rhubarb']
-export const orchid = effects['orchid']
-export const wisteria = effects['wisteria']
-export const coralReef = effects['coral-reef']
-export const pinkPrincess = effects['pink-princess']
-export const corncob = effects['corncob']
-export const ultraviolet = effects['ultraviolet']
-export const sunflower = effects['sunflower']
-export const horizon = effects['horizon']
-export const bloodyMary = effects['bloody-mary']
-export const skeleton = effects['skeleton']
-export const candyCorn = effects['candy-corn']
-export const plague = effects['plague']
-export const retrovision = effects['retrovision-']
-export const limoncello = effects['limoncello']
-export const firebrand = effects['firebrand']
-export const fallLeaves = effects['fall-leaves']
-export const sourCandy = effects['sour-candy']
-export const shoreline = effects['shoreline']
-export const nightbloom = effects['nightbloom']
-export const mistletoe = effects['mistletoe']
-export const iceberg = effects['iceberg']
-export const vaporwave = effects['vaporwave']
-export const glazedDonut = effects['glazed-donut']
-export const northStar = effects['north-star']
-export const pinkLemonade = effects['pink-lemonade']
-export const warlock = effects['warlock']
-export const pohutukawa = effects['pohutukawa']
-export const juiceBox = effects['juice-box']
-export const rose = effects['rosé']
-export const irishman = effects['irishman']
-export const springFlowers = effects['spring-flowers']
-export const radical = effects['radical']
-export const friedEgg = effects['fried-egg']
-export const easterEgg = effects['easter-egg']
-export const pastelSky = effects['pastel-sky']
-export const warmerNights = effects['warmer-nights']
-export const spaceship = effects['spaceship']
-export const cinder = effects['cinder']
-export const sunlight = effects['sunlight']
-export const pineapple = effects['pineapple']
-export const cincoDeMayo = effects['cinco-de-mayo']
-export const gamerGirl = effects['gamer-girl']
-export const neapolitan = effects['neapolitan']
-export const faintLilac = effects['faint-lilac']
-export const prideMonth = effects['pride-month']
-export const anodized = effects['anodized']
-export const toothpaste = effects['toothpaste']
-export const blossom = effects['blossom']
-export const hypselodoris = effects['hypselodoris']
-export const dinosaur = effects['dinosaur']
-export const beachPlease = effects['beach-please']
-export const friendship = effects['friendship']
-export const clownfish = effects['clownfish']
-export const mango = effects['mango']
-export const slurpee = effects['slurpee']
-export const tieDye = effects['tie-dye']
-export const cocktail = effects['cocktail']
-export const frutigerAero = effects['frutiger-aero']
-export const seaFoam = effects['sea-foam']
-export const manaPotion = effects['mana-potion']
-export const ribbon = effects['ribbon']
-export const strawberryCreme = effects['strawberry-crème']
-export const theJoker = effects['the-joker']
-export const pastelween = effects['pastelween']
-export const impishBlush = effects['impish-blush']
-export const hellfire = effects['hellfire']
-export const cyberOptics = effects['cyber-optics']
-export const fuchsia = effects['fuchsia']
-export const turkeySeason = effects['turkey-season']
-export const elderDragon = effects['elder-dragon']
-export const divided = effects['divided']
-export const kawaii = effects['kawaii']
-export const wrapped = effects['wrapped']
-export const glowingEmber = effects['glowing-ember']
-export const eggnog = effects['eggnog']
-export const jellybean = effects['jellybean']
-export const frostbite = effects['frostbite']
-export const roseGold = effects['rose-gold']
-export const firecracker = effects['firecracker']
-export const divine = effects['divine']
-export const blueJay = effects['blue-jay']
-export const stupidCupid = effects['stupid-cupid']
-export const mochi = effects['mochi']
-export const eldenLord = effects['elden-lord']
-export const sunsetFizz = effects['sunset-fizz']
-export const snowdrop = effects['snowdrop']
-export const bouquet = effects['bouquet']
-export const zestyLemon = effects['zesty-lemon']
-export const cardinal = effects['cardinal']
-export const forestSpring = effects['forest-spring']
-export const carrotCake = effects['carrot-cake']
-export const sprinkles = effects['sprinkles']
-export const silverFlare = effects['silver-flare']
-export const peckyChicken = effects['pecky-chicken']
-export const supernova = effects['supernova']
-export const nuclearWaste = effects['nuclear-waste']
-export const mintyWave = effects['minty-wave']
-export const sourMelon = effects['sour-melon']
-export const primary = effects['primary']
-export const scorched = effects['scorched']
-export const enchanted = effects['enchanted']
-export const atlantis = effects['atlantis']
-export const unicorn = effects['unicorn']
-export const tropica = effects['tropica']
-
 /**
  * All effects as a single object for backward compatibility
- * @type {Object<string, Object>} Object containing all 189+ paint effects
- *
- * @example
- * import { allEffects } from '7tv-styles/effects'
- * const summerStyle = allEffects.summer
+ * WARNING: This imports ALL effects and defeats tree shaking
+ * @deprecated Use individual named imports instead
  */
 export const allEffects = effects
 
 /**
- * Default export containing all effects for convenience
- * @type {Object<string, Object>} Object containing all 189+ paint effects
- *
- * @example
- * import effects from '7tv-styles/effects'
- * const rainbowStyle = effects.rainbow
+ * Default export for backward compatibility
+ * WARNING: This imports ALL effects and defeats tree shaking
+ * @deprecated Use individual named imports instead
  */
 export default effects

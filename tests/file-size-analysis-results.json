@@ -1,0 +1,18 @@
+{
+  "fullStylesSize": 77287,
+  "totalEffects": 189,
+  "avgIndividualSize": 756,
+  "treeShakeableSimulation": {
+    "effects": 2,
+    "estimatedSize": 1512
+  },
+  "fullImportSimulation": {
+    "effects": 189,
+    "estimatedSize": 77287
+  },
+  "savings": {
+    "bytes": 75775,
+    "percent": "98.0"
+  },
+  "timestamp": "2025-06-07T23:33:10.326Z"
+}
