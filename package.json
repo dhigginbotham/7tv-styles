@@ -1,6 +1,6 @@
 {
   "name": "7tv-styles",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A React component library for beautiful paint effects and gradient text styling, featuring 189+ unique effects scraped from 7tv.app.",
   "type": "module",
   "main": "lib/index.js",

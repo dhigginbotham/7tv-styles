@@ -13,6 +13,5 @@ body {
 }
 
 [class*="7tv__paint-effects--"] {
-  cursor: pointer;
   user-select: none;
 }
